@@ -5,15 +5,7 @@ from flask_restalchemy.resourcefactory import item_resource_factory, collection_
 from flask_restalchemy.resources import CollectionRelationResource, ItemRelationResource, \
     ItemResource, CollectionResource
 from flask_restalchemy.serialization import ColumnSerializer
-from flask_restalchemy.serialization.datetimeserializer import is_datetime_field, DateTimeSerializer
-from flask_restalchemy.serialization.enumserializer import is_enum_field, EnumSerializer
-from flask_restful import Api as RestfulApi
-
-from flask_restalchemy.resourcefactory import item_resource_factory, collection_resource_factory, \
-    property_resource_factory
-from flask_restalchemy.resources import CollectionRelationResource, ItemRelationResource, \
-    ItemResource, CollectionResource
-from flask_restalchemy.serialization import ColumnSerializer
+from flask_restalchemy.serialization.dateserializer import is_date_field, DateSerializer
 from flask_restalchemy.serialization.datetimeserializer import is_datetime_field, DateTimeSerializer
 from flask_restalchemy.serialization.enumserializer import is_enum_field, EnumSerializer
 
@@ -249,6 +241,7 @@ class Api(object):
         return self._db.session
 
     _FIELD_SERIALIZERS = [
+        (DateSerializer, is_date_field),
         (DateTimeSerializer, is_datetime_field),
         (EnumSerializer, is_enum_field)
     ]
