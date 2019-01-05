@@ -5,7 +5,7 @@ from sqlalchemy import Date
 from .serializer import ColumnSerializer
 
 
-class DateTimeSerializer(ColumnSerializer):
+class DateSerializer(ColumnSerializer):
     """
     Serializer for DateTime objects
     """
