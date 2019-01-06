@@ -1,4 +1,4 @@
-from sqlalchemy import DateTime
+from sqlalchemy import DateTime, Date
 from sqlalchemy_utils import PasswordType, JSONType
 
 from .modelserializer import ModelSerializer
@@ -190,6 +190,11 @@ def _gen_object_parameters_from_column(sql_type):
         return {
             'type': 'string',
             'format': 'date-time'
+        }
+    if isinstance(sql_type, Date):
+        return {
+            'type': 'string',
+            'format': 'date'
         }
     elif isinstance(sql_type, PasswordType):
         return {
